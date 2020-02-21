@@ -1,0 +1,19 @@
+This test was run against the example-webserver running locally (not in a container) on my mac.
+The results are clearly affected by the low value of `ulimit -n` (see README.md)
+
+
+Running 2m test @ http://localhost:5000/v1/
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    27.92ms   62.93ms   1.36s    90.07%
+    Req/Sec   474.17    478.64     4.00k    82.87%
+  Latency Distribution
+     50%    6.29ms
+     75%   16.15ms
+     90%   86.93ms
+     99%  249.97ms
+  366052 requests in 2.00m, 34.45MB read
+  Socket errors: connect 157, read 377, write 0, timeout 368
+  Non-2xx or 3xx responses: 335069
+Requests/sec:   3047.85
+Transfer/sec:    293.74KB

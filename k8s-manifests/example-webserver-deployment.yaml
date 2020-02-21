@@ -1,0 +1,44 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  annotations:
+  name: example-webserver
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: example-webserver
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: example-webserver
+    spec:
+      containers:
+      - image: camelcasenotation/example-webserver:latest
+        imagePullPolicy: IfNotPresent
+        name: example-webserver
+        ports:
+        - containerPort: 5000
+          name: http
+          protocol: TCP
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        # Needed if making requests to HTTPS external sites
+        volumeMounts:
+        - mountPath: /etc/ssl/certs
+          name: ca-certs
+          readOnly: true
+      restartPolicy: Always
+      # TODO(josh): Update this to ensure we don't run as root
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+      volumes:
+      - hostPath:
+          path: /etc/ssl/certs
+          type: DirectoryOrCreate
+        name: ca-certs

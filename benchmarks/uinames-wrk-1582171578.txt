@@ -1,0 +1,15 @@
+Running 2m test @ http://uinames.com/api/
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    53.17ms   89.13ms   1.76s    91.91%
+    Req/Sec    81.74     66.42   434.00     66.20%
+  Latency Distribution
+     50%   30.16ms
+     75%   39.06ms
+     90%   85.44ms
+     99%  499.79ms
+  36829 requests in 2.00m, 23.49MB read
+  Socket errors: connect 157, read 555, write 0, timeout 9
+  Non-2xx or 3xx responses: 36509
+Requests/sec:    306.65
+Transfer/sec:    200.30KB
