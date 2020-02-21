@@ -8,6 +8,7 @@ import (
 	"net/url"
 	"time"
 
+	// TODO(josh): Remove this and just use plain net/http
 	"github.com/valyala/fasthttp"
 )
 
